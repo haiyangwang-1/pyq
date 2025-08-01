@@ -85,7 +85,7 @@ class PearsonSimilarity(BasicSimilarity):
         
         # compute the similarity
         with np.errstate(divide='ignore', invalid='ignore'):
-            similarity = (j-p*q) / np.sqrt((1-p)*(1-q)*p*q)
+            similarity = (j-p*q) / np.sqrt(((1-p)*p)) /  np.sqrt(((1-q)*q))
         
         # set the similarity to 0 if the denominator is 0
         flag = (1-p)*(1-q)*p*q == 0
@@ -121,6 +121,13 @@ class CosineSimilarity(BasicSimilarity):
         
         
 class Exponential_Cityblock_Similarity(BasicSimilarity):
+    
+    '''
+    this similarity is copied from the old matlab codebase, where it is used for the 
+    EMD distance. 
+    
+    TODO: document this better. 
+    '''
     
     def __init__(self, *args, **kwargs):
         pass
