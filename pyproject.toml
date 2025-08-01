@@ -5,15 +5,21 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "diffusion-map @ file:///Users/haiy/git/quests/diffusion_map"
+    "dash-cytoscape>=1.0.2",
+    "dash>=3.2.0",
+    "diffusion-map @ file:///Users/haiy/git/quests/diffusion_map",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.3",
+    "networkx>=3.5",
+    "pandas>=2.3.1",
+    "pip>=25.1.1",
+    "plotly>=6.2.0",
+    "plotly>=6.2.0",
+    "pyvis>=0.3.2",
+    "scikit-learn>=1.7.1",
+    "tqdm>=4.67.1",
 ]
 
 [dependency-groups]
 dev = [
-    "jupyter>=1.1.1",
-    "matplotlib>=3.10.3",
-    "pandas>=2.3.1",
-    "pip>=25.1.1",
-    "plotly>=6.2.0",
-    "scikit-learn>=1.7.1",
 ]
