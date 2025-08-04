@@ -30,6 +30,10 @@ class Tree:
         # initialize the root nodes
         root_idx = np.arange(self._npts,dtype=int)
         self._graph.add_node(self._root_id, idx=root_idx, **root_attrs)
+    
+    @property
+    def npts(self) -> int:
+        return self._npts
         
     def add_child(self, parent_id: int, child_idx: list[int], **child_attrs) -> int:
         """Add a child to a parent node with data and additional attributes."""
@@ -41,6 +45,7 @@ class Tree:
         self._graph.add_edge(parent_id, child_id)
         
         return child_id
+    
         
     def get_children(self, node_id: int) -> List[int]:
         """Get all children of a node."""
@@ -198,3 +203,11 @@ class Tree:
             
         return [self[n]['idx'] for n in nodes]
     
+    def is_binary(self) -> bool:
+        '''
+        check if the tree is binary. 
+        '''
+        for node_id in self.bfs():
+            if len(self.get_children(node_id)) > 2:
+                return False
+        return True

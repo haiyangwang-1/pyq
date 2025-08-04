@@ -16,10 +16,10 @@ class HaarExpansion:
         assert tree.is_binary(), "Haar expansion is only defined for binary trees."
         
         self.tree = tree
-        self.compute_expansion()
+        self.compute_haar_funcs()
         
         
-    def compute_expansion(self):
+    def compute_haar_funcs(self):
 
         funcs = []
 
@@ -59,5 +59,8 @@ class HaarExpansion:
             # add the left and right children to the to_be_computed list. 
             to_be_computed.extend([left_id, right_id])
         
-        self.haar_funcs = np.array(funcs)
+        # the final shape of the haar functions is (npts, n_haar_funcs)
+        # which can be used directly to get the Lasso. 
+        
+        self.funcs = np.array(funcs).T
         
