@@ -177,8 +177,24 @@ class Tree:
             
         return nodes_by_level
             
+    def partition_by_level(self, level:int) -> List[List[int]]:
+        
+        '''
+        partition the points by the all the nodes at the given level, 
+        as well as the leaf nodes that are at a lower level (closer to the root). 
+        '''
+        nodes = []
+        for node_id in self.bfs():
+            if self.level(node_id) > level:
+                break
+            elif self.level(node_id) < level:
+                if not self.get_children(node_id):
+                    # this is a non-leaf node at lower level, ignored. 
+                    continue
+            else: # self.level(node_id) == level
+                pass
             
-        
-        
-        
-        
+            nodes.append(node_id)
+            
+        return [self[n]['idx'] for n in nodes]
+    
