@@ -43,6 +43,9 @@ def build_binary_tree_by_median_split(
         left_idx  = idx[emb < median]
         right_idx = idx[emb >= median]
         
+        if len(left_idx) == 0 or len(right_idx) == 0:
+            continue
+        
         left_id = tree.add_child(node_id, left_idx)
         right_id = tree.add_child(node_id, right_idx)
         

@@ -99,8 +99,11 @@ class TreeVisualizer:
         for node_id in node_ids:
             info = self.get_node_info(node_id)
             # Format first few indices as string
-            idx_str = str(info['idx'][:5])[1:-1] if info['idx'] is not None else 'None'
-            idx_str = idx_str + ' ...' if len(info['idx']) > 5 else idx_str
+            if info['idx'] is None:
+                idx_str = 'None'
+            else: 
+                idx_str = str(info['idx'][:5])[1:-1]
+                idx_str = idx_str + ' ...' if len(info['idx']) > 5 else idx_str
             
             custom_data.append([
                 info['level'], 
